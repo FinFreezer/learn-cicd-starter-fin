@@ -18,6 +18,12 @@ jobs:
         with:
           go-version: "1.27.1"
 
+      - name: Set up gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Run gosec
+        run: gosec ./...
+
       - name: Run unit test.
         run: go test -cover ./...
   style:
